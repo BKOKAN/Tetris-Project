@@ -1,32 +1,18 @@
 ﻿  tetris_main.cpp
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(141,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(141,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(162,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(162,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(163,81): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(163,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(164,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(164,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(142,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(142,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(163,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(163,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(164,81): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(164,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(165,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(165,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(166,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(166,51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(167,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(167,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(168,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(168,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(208,24): warning C4552: '-': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(209,25): warning C4552: '-': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(210,30): warning C4552: '-': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(211,26): warning C4552: '-': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(212,27): warning C4552: '-': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(213,27): warning C4552: '-': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(214,27): warning C4552: '-': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(222,24): warning C4552: '+': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(223,25): warning C4552: '+': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(224,30): warning C4552: '+': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(225,26): warning C4552: '+': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(226,27): warning C4552: '+': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(227,27): warning C4552: '+': result of expression not used
-C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(228,27): warning C4552: '+': result of expression not used
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(166,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(166,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(167,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(167,51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(168,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(168,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(169,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Bozo\source\repos\tetris_project\tetris_project\tetris_main.cpp(169,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   tetris_project.vcxproj -> C:\Users\Bozo\source\repos\tetris_project\x64\Debug\tetris_project.exe

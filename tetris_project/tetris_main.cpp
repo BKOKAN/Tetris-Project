@@ -16,6 +16,7 @@ int main()
 	int background_position = 0;
 
 	struct position { int x; int y; };
+
 	// T SHAPE
 	position blue_block[4];
 	blue_block[0].x = 160;
@@ -112,17 +113,17 @@ int main()
 	sf::Texture texture_purple_block;
 	sf::Texture texture_red_block;
 
-	texture_main_menu.loadFromFile("c:\\tetirs_sprites\\main_menu.png");
-	texture_select_ui.loadFromFile("c:\\tetirs_sprites\\select_ui.png");
-	texture_how_to_play.loadFromFile("c:\\tetirs_sprites\\how_to_play.png");
-	texture_background.loadFromFile("c:\\tetirs_sprites\\background.png");
-	texture_blue_block.loadFromFile("c:\\tetirs_sprites\\tetris_blue.png");
-	texture_dark_blue_block.loadFromFile("c:\\tetirs_sprites\\tetris_dark_blue.png");
-	texture_orange_block.loadFromFile("c:\\tetirs_sprites\\tetris_orange.png");
-	texture_yellow_block.loadFromFile("c:\\tetirs_sprites\\tetris_yellow.png");
-	texture_green_block.loadFromFile("c:\\tetirs_sprites\\tetris_green.png");
-	texture_purple_block.loadFromFile("c:\\tetirs_sprites\\tetris_purple.png");
-	texture_red_block.loadFromFile("c:\\tetirs_sprites\\tetris_red.png");
+	texture_main_menu.loadFromFile("c:\\tetris_sprites\\main_menu.png");
+	texture_select_ui.loadFromFile("c:\\tetris_sprites\\select_ui.png");
+	texture_how_to_play.loadFromFile("c:\\tetris_sprites\\how_to_play.png");
+	texture_background.loadFromFile("c:\\tetris_sprites\\background.png");
+	texture_blue_block.loadFromFile("c:\\tetris_sprites\\tetris_blue.png");
+	texture_dark_blue_block.loadFromFile("c:\\tetris_sprites\\tetris_dark_blue.png");
+	texture_orange_block.loadFromFile("c:\\tetris_sprites\\tetris_orange.png");
+	texture_yellow_block.loadFromFile("c:\\tetris_sprites\\tetris_yellow.png");
+	texture_green_block.loadFromFile("c:\\tetris_sprites\\tetris_green.png");
+	texture_purple_block.loadFromFile("c:\\tetris_sprites\\tetris_purple.png");
+	texture_red_block.loadFromFile("c:\\tetris_sprites\\tetris_red.png");
 
 	sf::Sprite sprite_main_menu;
 	sf::Sprite sprite_select_ui;
@@ -171,7 +172,6 @@ int main()
 	//playing board array
 	const int playing_board[10][12] = { 0 };
 
-
 	//array of shapes
 	const int L_BLOCK_CELLS[4][2] = { {0, 0}, {0, -1}, {0, 1}, {1, 1} };
 	const int REVERSE_L_BLOCK_CELLS[4][2] = { {0, 0}, {0, -1}, {0, 1}, {1, -1} };
@@ -197,70 +197,45 @@ int main()
 			{
 
 				if (event.type == event.KeyPressed)
-
-					if (event.type == event.KeyPressed)
+					switch (event.key.code)
 					{
-						if (event.key.code == sf::Keyboard::Key::Left)
+					case sf::Keyboard::Left:
+						for (int i = 0; i < 4; ++i)
 						{
-							bool moved_left = true;
-							if (moved_left)
-							{
-								red_block[0].x - 40;
-								blue_block[0].x - 40;
-								dark_blue_block[0].x - 40;
-								green_block[0].x - 40;
-								yellow_block[0].x - 40;
-								purple_block[0].x - 40;
-								orange_block[0].x - 40;
-							}
+							red_block[0].x -= 40;
+							blue_block[0].x -= 40;
+							dark_blue_block[0].x -= 40;
+							green_block[0].x -= 40;
+							yellow_block[0].x -= 40;
+							purple_block[0].x -= 40;
+							orange_block[0].x -= 40;
 						}
-						else if (event.key.code == sf::Keyboard::Key::Right)
+						break;
+					case sf::Keyboard::Right:
+						for (int i = 0; i < 4; ++i)
 						{
-							bool moved_left = true;
-							if (moved_left)
-							{
-								red_block[0].x + 40;
-								blue_block[0].x + 40;
-								dark_blue_block[0].x + 40;
-								green_block[0].x + 40;
-								yellow_block[0].x + 40;
-								purple_block[0].x + 40;
-								orange_block[0].x + 40;
-							}
+							red_block[0].x += 40;
+							blue_block[0].x += 40;
+							dark_blue_block[0].x += 40;
+							green_block[0].x += 40;
+							yellow_block[0].x += 40;
+							purple_block[0].x += 40;
+							orange_block[0].x += 40;
 						}
-						else if (event.key.code == sf::Keyboard::Key::Up)
+						break;
+					case sf::Keyboard::Up:
+						//rotate
 
-						{
+						break;
+					case sf::Keyboard::Down:
+						//speed up falling process
 
-						}
-						else if (event.key.code == sf::Keyboard::Key::Down)
-
-						{
-
-						}
+						break;
 					}
-				if (event.type == event.KeyReleased)
-				{
-					if (event.key.code == sf::Keyboard::Key::Left)
-					{
-						bool moved_left = false;
-					}
-					else if (event.key.code == sf::Keyboard::Key::Right)
-					{
-						bool moved_left = false;
-					}
-					else if (event.key.code == sf::Keyboard::Key::Up)
-					{
-
-					}
-					else if (event.key.code == sf::Keyboard::Key::Down)
-					{
-
-					}
-				}
-			}
+		    }
 			window.draw(sprite_background);
 			window.draw(sprite_blue_block[0]);
+			window.display();
 		}
 	}
 }
