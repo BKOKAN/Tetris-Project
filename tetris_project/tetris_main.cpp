@@ -260,7 +260,7 @@ int main()
 				}
 			}
 			window.draw(sprite_background);
-			window.draw(sprite_blue_block[4]);
+			window.draw(sprite_blue_block[0]);
 		}
 	}
 }
