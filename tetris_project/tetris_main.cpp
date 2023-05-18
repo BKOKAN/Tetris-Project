@@ -2,6 +2,9 @@
 #include <Window.hpp>
 #include <Graphics.hpp>
 #include <Graphics/RenderWindow.hpp>
+#include <cstdlib>
+#include <ctime>
+
 
 int main()
 {
@@ -14,6 +17,19 @@ int main()
 	int select_ui_position = 0;
 	int how_to_play_position = 0;
 	int background_position = 0;
+	int game_state = 0;
+	int score = 0;
+	unsigned long long time_passed = 1000;
+	int random_block = 0;
+
+	enum
+	{
+		block_picking,
+		moving,
+		board_check,
+		score_checking,
+		still_playing
+	};
 
 	struct position { int x; int y; };
 
@@ -94,9 +110,10 @@ int main()
 	green_block[3].x = green_block[0].x;
 	green_block[3].y = green_block[0].y - 120;
 
+	bool moved_down = false;
 	bool moved_left = false;
 	bool moved_right = false;
-	bool block_picking = false;
+	bool spawn_blue_block = false;
 
 	sf::RenderWindow window(sf::VideoMode(CELL_SIZE * BOARD_WIDTH, CELL_SIZE * BOARD_HEIGHT), "Tetris");
 	window.setFramerateLimit(60);
@@ -200,41 +217,120 @@ int main()
 					switch (event.key.code)
 					{
 					case sf::Keyboard::Left:
-						for (int i = 0; i < 4; ++i)
-						{
-							red_block[0].x -= 40;
-							blue_block[0].x -= 40;
-							dark_blue_block[0].x -= 40;
-							green_block[0].x -= 40;
-							yellow_block[0].x -= 40;
-							purple_block[0].x -= 40;
-							orange_block[0].x -= 40;
-						}
+					{
+						moved_left = true;
+					}
 						break;
 					case sf::Keyboard::Right:
-						for (int i = 0; i < 4; ++i)
-						{
-							red_block[0].x += 40;
-							blue_block[0].x += 40;
-							dark_blue_block[0].x += 40;
-							green_block[0].x += 40;
-							yellow_block[0].x += 40;
-							purple_block[0].x += 40;
-							orange_block[0].x += 40;
-						}
+					{
+					   moved_right = true;
+
+					}
 						break;
 					case sf::Keyboard::Up:
 						//rotate
 
 						break;
 					case sf::Keyboard::Down:
-						//speed up falling process
+					{
+						moved_down = true;
+					}
 
 						break;
 					}
 		    }
+
+			switch (game_state)
+			{
+			default:
+				score = 0;
+				game_time.restart();
+				game_state = block_picking;
+				break;
+
+			case block_picking:
+				std::srand(static_cast<unsigned int>(std::time(0)));
+
+				// Generate a random number between 1 and 7
+				random_block = (std::rand() % 7) + 1;
+				if (random_block < 8)
+				{
+					spawn_blue_block = true;
+					game_state = moving;
+				}
+
+				break;
+
+			case moving:
+				if (spawn_blue_block)
+				{
+					// Check if the block can move down
+					bool canMoveDown = (blue_block[0].y < BOARD_HEIGHT* CELL_SIZE - CELL_SIZE);
+
+					// Check if the block has reached the bottom or collided with another block
+					if (!canMoveDown)
+					{
+						// Handle collision or reaching the bottom
+						// Spawn a new block
+						spawn_blue_block = false;
+						game_state = block_picking;
+					}
+					else
+					{
+						// Handle user input to move the block left or right
+						if (moved_left)
+						{
+							bool canMoveLeft = (blue_block[0].x > 0);
+							if (canMoveLeft)
+							{
+								// Move the block left
+								for (int i = 0; i < 4; ++i)
+								{
+									blue_block[i].x -= CELL_SIZE;
+								}
+							}
+							moved_left = false;
+						}
+						else if (moved_right)
+						{
+							bool canMoveRight = (blue_block[3].x < (BOARD_WIDTH - 1)* CELL_SIZE);
+							if (canMoveRight)
+							{
+								// Move the block right
+								for (int i = 0; i < 4; ++i)
+								{
+									blue_block[i].x += CELL_SIZE;
+								}
+							}
+							moved_right = false;
+						}
+						else if (moved_down)
+						{
+							bool canMoveDown = (blue_block[0].y < BOARD_HEIGHT* CELL_SIZE - CELL_SIZE);
+							if (canMoveDown)
+							{
+								// Move the block down
+								for (int i = 0; i < 4; ++i)
+								{
+									blue_block[i].y += CELL_SIZE;
+								}
+							}
+							moved_down = false;
+						}
+					}
+				}
+
+				// Draw the blue block
+				for (int i = 0; i < 4; ++i)
+				{
+					sprite_blue_block[i].setPosition(blue_block[i].x, blue_block[i].y);
+					window.draw(sprite_blue_block[i]);
+				}
+
+				break;
+				
+			}
 			window.draw(sprite_background);
-			window.draw(sprite_blue_block[0]);
 			window.display();
 		}
 	}
