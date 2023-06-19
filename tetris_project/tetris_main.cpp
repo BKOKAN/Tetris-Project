@@ -5,6 +5,106 @@
 #include <cstdlib>
 #include <ctime>
 
+void random_block_generator 
+(   
+	int random_block,
+	bool spawn_blue_block,
+	bool spawn_dark_blue_block,
+	bool spawn_orange_block,
+	bool spawn_yellow_block,
+	bool spawn_green_block,
+	bool spawn_purple_block,
+	bool spawn_red_block
+)
+{
+	std::srand(static_cast<unsigned int>(std::time(0)));
+
+	// Generate a random number between 1 and 7
+	random_block = (std::rand() % 7) + 1;
+	if (random_block == 1)
+	{
+		spawn_blue_block = true;
+	}
+	else if (random_block == 2)
+	{
+		spawn_dark_blue_block = true;
+	}
+	else if (random_block == 3)
+	{
+		spawn_orange_block = true;
+	}
+	else if(random_block == 4)
+	{
+		spawn_yellow_block = true;
+	}
+	else if (random_block == 5)
+	{
+		spawn_green_block = true;
+	}
+	else if (random_block == 6)
+	{
+		spawn_purple_block = true;
+	}
+	else if (random_block == 7)
+	{
+		spawn_red_block = true;
+	}
+};
+void block_spawning
+(
+	bool spawn_blue_block,
+	bool spawn_dark_blue_block,
+	bool spawn_orange_block,
+	bool spawn_yellow_block,
+	bool spawn_green_block,
+	bool spawn_purple_block,
+	bool spawn_red_block,
+	sf::RenderWindow window,
+)
+{
+	if (spawn_blue_block)
+	{
+		blue_block[0].x = 160;
+		blue_block[0].y = 40;
+		blue_block[1].x = blue_block[0].x;
+		blue_block[1].y = blue_block[0].y - 40;
+		blue_block[2].x = blue_block[0].x - 40;
+		blue_block[2].y = blue_block[0].y - 40;
+		blue_block[3].x = blue_block[0].x + 40;
+		blue_block[3].y = blue_block[0].y - 40;
+		window.draw();
+	}
+	if (spawn_dark_blue_block)
+	{
+
+		window.draw();
+	}
+	if (spawn_oragne_block)
+	{
+
+		window.draw();
+	}
+	if (spawn_yellow_block)
+	{
+
+		window.draw();
+	}
+	if (spawn_green_block)
+	{
+
+		window.draw();
+	}
+	if (spawn_purple_block)
+	{
+
+		window.draw();
+	}
+	if (spawn_red_block)
+	{
+
+		window.draw();
+	}
+}
 
 int main()
 {
@@ -21,28 +121,20 @@ int main()
 	int score = 0;
 	unsigned long long time_passed = 1000;
 	int random_block = 0;
-
-	enum
-	{
-		block_picking,
-		moving,
-		board_check,
-		score_checking,
-		still_playing
-	};
-
+	
 	struct position { int x; int y; };
 
 	// T SHAPE
 	position blue_block[4];
 	blue_block[0].x = 160;
-	blue_block[0].y = 0;
+	blue_block[0].y = 40;
 	blue_block[1].x = blue_block[0].x;
 	blue_block[1].y = blue_block[0].y - 40;
 	blue_block[2].x = blue_block[0].x - 40;
 	blue_block[2].y = blue_block[0].y - 40;
 	blue_block[3].x = blue_block[0].x + 40;
 	blue_block[3].y = blue_block[0].y - 40;
+
 
 	// L SHAPE
 	position red_block[4];
@@ -114,6 +206,12 @@ int main()
 	bool moved_left = false;
 	bool moved_right = false;
 	bool spawn_blue_block = false;
+	bool spawn_dark_blue_block = false;
+	bool spawn_orange_block = false;
+	bool spawn_yellow_block = false;
+	bool spawn_green_block = false;
+	bool spawn_purple_block = false;
+	bool spawn_red_block = false;
 
 	sf::RenderWindow window(sf::VideoMode(CELL_SIZE * BOARD_WIDTH, CELL_SIZE * BOARD_HEIGHT), "Tetris");
 	window.setFramerateLimit(60);
@@ -129,24 +227,56 @@ int main()
 	sf::Texture texture_green_block;
 	sf::Texture texture_purple_block;
 	sf::Texture texture_red_block;
+	sf::Texture texture_background_block;
 
-	texture_main_menu.loadFromFile("c:\\tetris_sprites\\main_menu.png");
-	texture_select_ui.loadFromFile("c:\\tetris_sprites\\select_ui.png");
-	texture_how_to_play.loadFromFile("c:\\tetris_sprites\\how_to_play.png");
-	texture_background.loadFromFile("c:\\tetris_sprites\\background.png");
-	texture_blue_block.loadFromFile("c:\\tetris_sprites\\tetris_blue.png");
-	texture_dark_blue_block.loadFromFile("c:\\tetris_sprites\\tetris_dark_blue.png");
-	texture_orange_block.loadFromFile("c:\\tetris_sprites\\tetris_orange.png");
-	texture_yellow_block.loadFromFile("c:\\tetris_sprites\\tetris_yellow.png");
-	texture_green_block.loadFromFile("c:\\tetris_sprites\\tetris_green.png");
-	texture_purple_block.loadFromFile("c:\\tetris_sprites\\tetris_purple.png");
-	texture_red_block.loadFromFile("c:\\tetris_sprites\\tetris_red.png");
+	/*
+	texture_main_menu.loadFromFile("c:\\resources\\main_menu.png");
+	texture_select_ui.loadFromFile("c:\\resources\\select_ui.png");
+	texture_how_to_play.loadFromFile("c:\\resources\\how_to_play.png");
+	texture_background.loadFromFile("c:\\resources\\background.png");
+	texture_blue_block.loadFromFile("c:\\resources\\tetris_blue.png");
+	texture_dark_blue_block.loadFromFile("c:\\resources\\tetris_dark_blue.png");
+	texture_orange_block.loadFromFile("c:\\resources\\tetris_orange.png");
+	texture_yellow_block.loadFromFile("c:\\resources\\tetris_yellow.png");
+	texture_green_block.loadFromFile("c:\\resources\\tetris_green.png");
+	texture_purple_block.loadFromFile("c:\\resources\\tetris_purple.png");
+	texture_red_block.loadFromFile("c:\\resources\\tetris_red.png");
+	texture_background_block.loadFromFile("c:\\resources\\background_block.png");
+	*/
+
+	std::string projectFolderPath = "./"; // Assuming the project folder is the working directory
+
+	std::string main_menu_path = projectFolderPath + "resources/main_menu.png";
+	texture_main_menu.loadFromFile(main_menu_path);
+	std::string select_ui_path = projectFolderPath + "resources/select_ui.png";
+	texture_select_ui.loadFromFile(select_ui_path);
+	std::string how_to_play_path = projectFolderPath + "resources/how_to_play.png";
+	texture_how_to_play.loadFromFile(how_to_play_path);
+	std::string background_path = projectFolderPath + "resources/background.png";
+	texture_background.loadFromFile(background_path);
+	std::string tetris_blue_path = projectFolderPath + "resources/tetris_blue.png";
+	texture_blue_block.loadFromFile(tetris_blue_path);
+	std::string tetris_dark_blue_path = projectFolderPath + "resources/tetris_dark_blue.png";
+	texture_dark_blue_block.loadFromFile(tetris_dark_blue_path);
+	std::string tetris_orange_path = projectFolderPath + "resources/tetris_orange.png";
+	texture_orange_block.loadFromFile(tetris_orange_path);
+	std::string tetris_yellow_path = projectFolderPath + "resources/tetris_yellow.png";
+	texture_yellow_block.loadFromFile(tetris_yellow_path);
+	std::string tetris_green_path = projectFolderPath + "resources/tetris_green.png";
+	texture_green_block.loadFromFile(tetris_green_path);
+	std::string tetris_purple_path = projectFolderPath + "resources/tetris_purple.png";
+	texture_purple_block.loadFromFile(tetris_purple_path);
+	std::string tetris_red_path = projectFolderPath + "resources/tetris_red.png";
+	texture_red_block.loadFromFile(tetris_red_path);
+	std::string background_block_path = projectFolderPath + "resources/background_block.png";
+	texture_background_block.loadFromFile(background_block_path);
 
 	sf::Sprite sprite_main_menu;
 	sf::Sprite sprite_select_ui;
 	sf::Sprite sprite_how_to_play;
 	sf::Sprite sprite_background;
 
+	sf::Sprite sprite_background_block[120];
 	sf::Sprite sprite_blue_block[4];
 	sf::Sprite sprite_dark_blue_block[4];
 	sf::Sprite sprite_orange_block[4];
@@ -163,6 +293,11 @@ int main()
 	sprite_how_to_play.setPosition(0, 0);
 	sprite_background.setTexture(texture_background);
 	sprite_background.setPosition(0, 0);
+
+	for (int i = 0; i <= 120; i++)
+	{
+		sprite_background_block[i].setTexture(texture_background_block);
+	}
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -185,6 +320,7 @@ int main()
 		sprite_purple_block[i].setPosition(purple_block[i].x, purple_block[i].y);
 		sprite_red_block[i].setPosition(red_block[i].x, red_block[i].y);
 	}
+
 
 	//playing board array
 	const int playing_board[10][12] = { 0 };
@@ -239,7 +375,7 @@ int main()
 						break;
 					}
 		    }
-
+						
 			switch (game_state)
 			{
 			default:
